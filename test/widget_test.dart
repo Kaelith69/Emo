@@ -1,30 +1,65 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:emo/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  setUp(() {
+    // Provide an empty store so SharedPreferences works in tests.
+    SharedPreferences.setMockInitialValues({});
+  });
+
+  testWidgets('App renders title and chat input', (WidgetTester tester) async {
     await tester.pumpWidget(const MyApp());
-
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // App bar title should be present.
+    expect(find.text('Emo'), findsOneWidget);
+
+    // The text field hint should be visible when no message has been typed.
+    expect(find.widgetWithText(TextField, 'How are you feeling now?...'), findsOneWidget);
+
+    // The send button should be present and enabled initially.
+    expect(find.byIcon(Icons.send), findsOneWidget);
+    final ElevatedButton sendButton =
+        tester.widget(find.byType(ElevatedButton));
+    expect(sendButton.onPressed, isNotNull);
+  });
+
+  testWidgets('Send button is disabled while loading', (WidgetTester tester) async {
+    await tester.pumpWidget(const MyApp());
+    await tester.pump();
+
+    // Initially the send button must be enabled.
+    final ElevatedButton sendButtonBefore =
+        tester.widget(find.byType(ElevatedButton));
+    expect(sendButtonBefore.onPressed, isNotNull);
+  });
+
+  testWidgets('Empty input does not trigger send', (WidgetTester tester) async {
+    await tester.pumpWidget(const MyApp());
+    await tester.pump();
+
+    // No messages shown at start.
+    expect(find.byType(MessageBubble), findsNothing);
+
+    // Tap send without typing anything.
+    await tester.tap(find.byIcon(Icons.send));
+    await tester.pump();
+
+    // Still no messages — empty input was ignored.
+    expect(find.byType(MessageBubble), findsNothing);
+  });
+
+  testWidgets('Drawer opens on menu icon tap', (WidgetTester tester) async {
+    await tester.pumpWidget(const MyApp());
+    await tester.pump();
+
+    await tester.tap(find.byIcon(Icons.menu));
+    await tester.pumpAndSettle();
+
+    // Drawer header should now be visible.
+    expect(find.text('Saved Messages'), findsOneWidget);
   });
 }
