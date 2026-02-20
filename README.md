@@ -1,55 +1,216 @@
-<body>
-    <h1>Emo - Your Emotional Support Buddy</h1>
-    <p>Emo is a Flutter-based mobile application designed to be your emotional support buddy. This app utilizes Google's generative language model, PaLM LLM, to provide emotional support and engage in meaningful conversations with users. Whether you need someone to talk to or seek words of encouragement, Emo is here for you.</p>
-    <img src="screenshots/emo_app_screenshot.png" alt="Emo App Screenshot" />
-    <h2>Features</h2>
-    <ul>
-        <li><strong>Emotional Support Conversations:</strong> Emo engages in emotional support conversations with users, offering words of comfort, empathy, and understanding.</li>
-        <li><strong>Encouragement and Positivity:</strong> The app provides positive affirmations and motivational messages to boost your mood and self-esteem.</li>
-        <li><strong>Minimalistic AMOLED UI:</strong> Emo features a sleek and minimalistic AMOLED user interface for a visually pleasing experience.</li>
-        <li><strong>Chat History:</strong> Emo saves chat history and displays it on the side panel, allowing you to revisit previous conversations.</li>
-        <li><strong>Chatbot Interface:</strong> Emo's user-friendly chatbot interface makes it easy to start a conversation and receive support.</li>
-    </ul>
-    <h2>Getting Started</h2>
-    <ol>
-        <li>Clone the repository to your local machine:</li>
-    </ol>
-    <code>git clone https://github.com/sayanth-t-m/Emo.git</code>
-    <ol start="2">
-        <li>Navigate to the project directory:</li>
-    </ol>
-    <code>cd Emo</code>
-    <ol start="3">
-        <li>Install dependencies using Flutter:</li>
-    </ol>
-    <code>flutter pub get</code>
-    <ol start="4">
-        <li>Run the app on your preferred emulator or device:</li>
-    </ol>
-    <code>flutter run</code>
-    <h2>Usage</h2>
-    <ol>
-        <li>Launch the Emo app on your device.</li>
-        <li>Start a conversation by typing a message or sharing your feelings.</li>
-        <li>Emo will respond with supportive and empathetic messages.</li>
-        <li>Engage in a meaningful conversation to feel better and receive emotional support.</li>
-        <li>View chat history on the side panel for reference and continuity.</li>
-    </ol>
-    <h2>Screenshots</h2>
-    <img src="screenshots/emo_app_screenshots.png" alt="Emo App Screenshots" />
-    <h2>Technologies Used</h2>
-    <ul>
-        <li>Flutter: Flutter is a versatile and cross-platform framework used for developing the Emo app.</li>
-        <li>Google PaLM LLM API: Emo utilizes Google's generative language model, PaLM LLM, to generate human-like responses and engage in supportive conversations.</li>
-    </ul>
-    <h2>Acknowledgments</h2>
-    <p>We would like to express our gratitude to the Flutter community and Google for their support and resources that made the development of Emo possible.</p>
-    <h2>License</h2>
-    <p>This project is licensed under the MIT License. For details, please refer to the <a href="LICENSE">LICENSE</a> file.</p>
-    <h2>Contact</h2>
-    <p>Have questions or feedback? Feel free to reach out:</p>
-    <ul>
-        <li>Email: <a href="mailto:sayanth.t.m9090@gmail.com">sayanth.t.m9090@gmail.com</a></li>
-        <li>GitHub: <a href="https://github.com/sayanth-t-m">sayanth-t-m</a></li>
-    </ul>
-</body>
+<div align="center">
+
+<!-- Logo / Banner SVG -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 160" width="600" height="160">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#121212;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1c1b1f;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7c4dff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b39ddb;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="160" rx="18" fill="url(#bg)" />
+  <!-- Heart icon -->
+  <path d="M60 75 C60 60 45 50 35 60 C25 70 35 90 60 105 C85 90 95 70 85 60 C75 50 60 60 60 75Z" fill="url(#accent)" opacity="0.9"/>
+  <!-- Title -->
+  <text x="110" y="85" font-family="Georgia, serif" font-size="56" font-weight="900" fill="url(#accent)">Emo</text>
+  <!-- Tagline -->
+  <text x="110" y="115" font-family="Arial, sans-serif" font-size="18" fill="#b39ddb" opacity="0.85">Your AI Emotional Support Buddy</text>
+</svg>
+
+<br/>
+
+[![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter&logoColor=white)](https://flutter.dev)
+[![Dart](https://img.shields.io/badge/Dart-3.x-0175C2?logo=dart&logoColor=white)](https://dart.dev)
+[![Gemini API](https://img.shields.io/badge/Gemini-1.5%20Flash-4285F4?logo=google&logoColor=white)](https://ai.google.dev)
+[![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Android%20%7C%20iOS%20%7C%20Web%20%7C%20Desktop-lightgrey)](https://flutter.dev)
+
+</div>
+
+---
+
+## ✨ What is Emo?
+
+**Emo** is a cross-platform Flutter application that acts as your personal emotional support companion. Powered by Google's **Gemini 1.5 Flash** large language model, Emo listens to how you feel and replies with warm, empathetic, and uplifting messages — like a caring friend in your pocket.
+
+---
+
+## 🎯 Features
+
+| Feature | Description |
+|---|---|
+| 💬 **Contextual Chat** | Maintains conversation context for natural follow-up replies |
+| 🤗 **Emotional Support** | Replies are crafted to be empathetic, uplifting, and emoji-friendly |
+| 📱 **AMOLED Dark UI** | Sleek `#121212` background — easy on the eyes and battery |
+| 💾 **Saved Messages** | Bot responses are persisted locally via `shared_preferences` |
+| 🗑️ **Delete Saved Messages** | Individual saved messages can be removed from the side drawer |
+| 🌐 **Cross-platform** | Runs on Android, iOS, Web, Linux, macOS, and Windows |
+| ⚡ **Gemini 1.5 Flash** | Fast, high-quality generative responses via Google AI |
+
+---
+
+## 📸 Screenshots
+
+> _Add your screenshots to a `screenshots/` folder and update the paths below._
+
+| Chat Screen | Saved Messages Drawer |
+|---|---|
+| ![Chat](screenshots/chat.png) | ![Drawer](screenshots/drawer.png) |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Flutter SDK](https://docs.flutter.dev/get-started/install) **≥ 3.0.0**
+- A **Google Gemini API key** — get one free at [Google AI Studio](https://aistudio.google.com/app/apikey)
+
+### Installation
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/Kaelith69/Emo.git
+cd Emo
+
+# 2. Install dependencies
+flutter pub get
+
+# 3. Add your API key (see Configuration below)
+
+# 4. Run the app
+flutter run
+```
+
+### Configuration
+
+Open `lib/main.dart` and replace the placeholder with your Gemini API key:
+
+```dart
+// lib/main.dart  (line ~18)
+const String _kApiKey = 'YOUR_GEMINI_API_KEY';
+```
+
+> ⚠️ **Security note:** Never commit a real API key to a public repository.  
+> Consider loading the key from an environment variable or a secrets manager for production builds.
+
+---
+
+## 🏗️ Architecture & Design
+
+```
+lib/
+└── main.dart          # Single-file app (suitable for small projects)
+    ├── MyApp          # Root MaterialApp widget
+    ├── MyHomePage     # Stateful chat screen
+    │   ├── _sendMessage()        # Gemini API call with context
+    │   ├── _addMessage()         # Thread-safe message list update
+    │   └── _saveMessage()        # SharedPreferences persistence
+    ├── Message        # Immutable data model
+    ├── MessageBubble  # Stateless chat bubble widget
+    └── MyDrawer       # Stateful saved-messages side panel
+```
+
+**State management:** Plain `StatefulWidget` + `setState` — sufficient for the current single-screen design.  
+**Persistence:** `shared_preferences` for lightweight local storage of bot responses.  
+**Networking:** `http` package for REST calls to the Gemini API.  
+**Typography:** `google_fonts` (Playfair Display for the app title).
+
+---
+
+## 🔌 API Details
+
+| Property | Value |
+|---|---|
+| Provider | Google Generative AI |
+| Model | `gemini-1.5-flash` |
+| Endpoint | `POST /v1beta/models/gemini-1.5-flash:generateContent` |
+| Temperature | `0.9` |
+| Candidate count | `1` |
+
+**Request schema:**
+```json
+{
+  "contents": [{ "parts": [{ "text": "<prompt>" }] }],
+  "generationConfig": { "temperature": 0.9, "candidateCount": 1 }
+}
+```
+
+**Response parsing:**
+```dart
+candidates[0]['content']['parts'][0]['text']
+```
+
+---
+
+## 📦 Dependencies
+
+| Package | Version | Purpose |
+|---|---|---|
+| `flutter` | SDK | UI framework |
+| `google_fonts` | ^6.0.0 | Playfair Display typography |
+| `http` | ^1.1.0 | HTTP client for Gemini API |
+| `shared_preferences` | ^2.2.1 | Local message persistence |
+| `cupertino_icons` | ^1.0.2 | iOS-style icon set |
+
+---
+
+## 🧪 Running Tests
+
+```bash
+flutter test
+```
+
+The test suite covers:
+- App renders title and chat input
+- Send button is disabled while loading
+- Empty input is silently ignored (no blank messages sent)
+- Drawer opens and shows the "Saved Messages" header
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] Environment-variable / secrets-manager integration for the API key
+- [ ] Message search within saved messages
+- [ ] Theming / light mode support
+- [ ] Multi-turn structured conversation history
+- [ ] Export chat history to a file
+- [ ] Push notification support for daily affirmations
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first.
+
+1. Fork the repo
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a pull request
+
+---
+
+## 📄 License
+
+Distributed under the **MIT License**. See [LICENSE](LICENSE) for details.
+
+---
+
+## 📬 Contact
+
+Have questions or feedback?
+
+- **GitHub Issues:** [github.com/Kaelith69/Emo/issues](https://github.com/Kaelith69/Emo/issues)
+
+---
+
+<div align="center">
+  <sub>Built with ❤️ and Flutter</sub>
+</div>
+
